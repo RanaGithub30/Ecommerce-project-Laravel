@@ -11,9 +11,9 @@
   <!-- /.login-logo -->
   <div class="card">
     <div class="card-body login-card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Change your Password Here</p>
 
-      <form action="{{ route('admin/login/action') }}" method="post">
+      <form action="{{ route('admin/forgot-password/action') }}" method="post">
         @csrf
 
         <div class="input-group mb-3">
@@ -31,7 +31,7 @@
           @enderror
         </div>
         <div class="input-group mb-3">
-          <input type="password" name="password" class="form-control" placeholder="Password">
+          <input type="password" name="password" class="form-control" placeholder="New Password">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -44,19 +44,34 @@
               </span>
           @enderror
         </div>
+
+        <div class="input-group mb-3">
+          <input type="password" name="conf_password" class="form-control" placeholder="Confirm Password">
+          <div class="input-group-append">
+            <div class="input-group-text">
+              <span class="fas fa-lock"></span>
+            </div>
+          </div>
+
+          @error('conf_password')
+              <span class="invalid-feedback" role="alert">
+                  <strong>{{ $message }}</strong>
+              </span>
+          @enderror
+        </div>
+
         <div class="row">
-          <div class="col-8">
-               <a href="{{ route('admin/forgot-password') }}" class="btn btn-dark btn-block">I forgot my password</a>
+          <div class="col-6">
+             <a href="{{ route('admin/login') }}" class="btn btn-dark btn-block">Back</a>    
           </div>
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <div class="col-6">
+            <button type="submit" class="btn btn-primary btn-block">Change Password</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
 
-      <!-- /.social-auth-links -->
       
     </div>
     <!-- /.login-card-body -->
