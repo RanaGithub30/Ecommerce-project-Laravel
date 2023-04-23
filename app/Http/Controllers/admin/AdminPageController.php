@@ -74,4 +74,33 @@ class AdminPageController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('admin/login');
     }
+
+    /**
+     * 
+    */
+
+    public function your_profile()
+    {
+           return view('admin.your_profile');
+    }
+
+    public function your_profile_edit_page()
+    {
+        return view('admin.edit_profile_page');
+    }
+
+    public function edit_profile_action(Request $request)
+    {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email'
+            ]);
+
+            Admin::whereId(Auth::guard('admin')->user()->id)->update([
+                'name' => $request->name,
+                'email' => $request->email,
+            ]);
+
+            return redirect()->back()->with('success', 'Successfully Edited');
+    }
 }

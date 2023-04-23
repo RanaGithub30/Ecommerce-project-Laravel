@@ -27,6 +27,11 @@
   <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
+
+@php
+   $segment = Request::segments()[1];
+@endphp
+
 <div class="wrapper">
 
   <!-- Preloader -->
@@ -40,12 +45,6 @@
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
       </li>
     </ul>
 
@@ -119,7 +118,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+            <a href="{{ route('admin/dashboard') }}" class="nav-link @if($segment == 'dashboard') active @endif">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
@@ -139,15 +138,9 @@
             </a>
             <ul class="nav nav-treeview">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin/your-profile') }}" class="nav-link @if($segment == 'your-profile') active @endif">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Your Profile</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Change Password</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -215,9 +208,5 @@
 <script src="{{asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('dist/js/adminlte.js')}}"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="{{asset('dist/js/demo.js')}}"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="{{asset('dist/js/pages/dashboard.js')}}"></script> -->
 </body>
 </html>

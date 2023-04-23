@@ -32,7 +32,10 @@ Route::controller(AdminPageController::class)
 
       // admin auth middleware..
       Route::group(['middleware' => 'admin.auth'], function () {
-        Route::get('dashboard', 'dashboard')->name('admin/dashboard');           
+        Route::get('dashboard', 'dashboard')->name('admin/dashboard');
+        Route::get('your-profile', 'your_profile')->name('admin/your-profile');
+        Route::get('your-profile-edit-page', 'your_profile_edit_page')->name('admin/your-profile-edit-page');
+        Route::post('edit-profile-action', 'edit_profile_action')->name('admin/edit-profile-action');           
       });
 
 });
